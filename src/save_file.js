@@ -13,9 +13,11 @@ SaveFile = cc.Class.extend({
 	        this._view.setUint8(i, 0);
 	},
 
+	// se queda con una referencia, no hace una copia
 	cargar:function(data) {
+		var dataView = new DataView(data);
 	    for (var i = 0; i < this._view.byteLength; i++)
-	        this._view.setUint8(i, data[i]);
+	        this._view.setUint8(i, dataView.getUint8(i));
 	},
 
     setFuturo:function(futuro) {

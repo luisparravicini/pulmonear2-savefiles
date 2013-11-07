@@ -20,6 +20,8 @@ Uso
 ```
   var saveFile = new SaveFile();
 
+  saveFile.cargar( arrayBuffer );
+
   // setters
   saveFile.setFuturo( true / false );
   saveFile.setNumero( offset, valor );

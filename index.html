@@ -9,6 +9,25 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script src="src/CCClass.js"></script>
 <script src="src/save_file.js"></script>
 <script>
+
+function handleFiles(files) {
+  for (var i = 0; i < files.length; i++) {
+    var file = files[i];
+  
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var saveFile = new SaveFile();
+        var buffer = e.target.result;
+        saveFile.cargar(buffer);
+        dumpFile(saveFile);
+       };
+
+    reader.readAsArrayBuffer(file);
+  }
+}
+
+
 function updateSize() {
   var nBytes = 0,
       oFiles = document.getElementById("uploadInput").files,
@@ -31,37 +50,28 @@ function log(what) {
   dump.append($('<p>').text(what));
 };
 
-function handleFiles(files) {
-  for (var i = 0; i < files.length; i++) {
-    var file = files[i];
-  
+function clearLog() {
+  $('#dump').empty();
+};
 
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        var buffer = e.target.result;
-        var saveFile = new SaveFile();
-        saveFile.parse(buffer);
+function dumpFile(saveFile) {
+  clearLog();
 
-        var dump = $('#dump');
-        log('tematica ' + saveFile.getTematica());
-        for (var i = 0; i < 6; i++)
-          log('numeros[' + i + '] = ' + saveFile.getNumero(i));
-        for (var i = 0; i < 6; i++)
-          log('switchs[' + i + '] = ' + saveFile.getSwitch(i));
-        log('nombre = ' + saveFile.getNombre());
-        log('data = ' + saveFile.getData());
-    	 };
-
-    reader.readAsArrayBuffer(file);
-  }
-}
+  log('tematica ' + saveFile.getFuturo());
+  for (var i = 0; i < 6; i++)
+    log('numeros[' + i + '] = ' + saveFile.getNumero(i));
+  for (var i = 0; i < 6; i++)
+    log('switchs[' + i + '] = ' + saveFile.getSwitch(i));
+  log('nombre = ' + saveFile.getNombre());
+  log('data = ' + saveFile.getData());
+};
 
 </script>
 </head>
 
 <body onload="updateSize();">
-<form name="uploadForm">
-<p><input id="uploadInput" type="file" name="myFiles" onchange="updateSize();handleFiles(this.files);" multiple> selected files: <span id="fileNum">0</span>; total size: <span id="fileSize">0</span></p>
+<form>
+<p><input id="uploadInput" type="file" onchange="updateSize();handleFiles(this.files);" multiple> selected files: <span id="fileNum">0</span>; total size: <span id="fileSize">0</span></p>
 </form>
 <div id="dump"></div>
 </body>

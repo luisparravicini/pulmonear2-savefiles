@@ -21,11 +21,11 @@ SaveFile = cc.Class.extend({
 	},
 
     setFuturo:function(futuro) {
-    	this._view.setUint8(0, futuro);
+    	this._setBool(0, futuro);
     },
 
     getFuturo:function() {
-        return this._view.getUint8(0);
+        return this._getBool(0);
     },
 
     setNumero:function(idx, value) {
@@ -37,11 +37,11 @@ SaveFile = cc.Class.extend({
     },
 
     setSwitch:function(idx, enabled) {
-    	this._view.setUint8(13 + idx, (enabled ? 1 : 0));
+    	this._setBool(13 + idx, enabled);
     },
 
     getSwitch:function(idx) {
-    	return (this._view.getUint8(13 + idx) === 1);
+    	return this._getBool(13 + idx);
     },
 
     setNombre:function(name) {
@@ -83,5 +83,13 @@ SaveFile = cc.Class.extend({
     		result.push(this._view.getUint8(35 + i));
     	return result;
     },
+
+    _setBool:function(idx, value) {
+		this._view.setUint8(idx, value);
+    },
+
+    _getBool:function(idx) {
+    	return (this._view.getUint8(idx) == 1);
+	 },
 
 });

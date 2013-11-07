@@ -70,7 +70,7 @@ describe("SaveFile", function() {
         view.setUint8(i, testData1[i]);
     saveFile.cargar(data);
 
-    expect(saveFile.getFuturo()).toBe(1);
+    expect(saveFile.getFuturo()).toBeTruthy();
 
     var numeros = [-1233, -1227, -1185, -891, 1167, 15573];
     numeros.forEach(function(n, i) {

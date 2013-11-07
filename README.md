@@ -69,6 +69,6 @@ Para grabar el archivo:
 Esto genera un download con nombre 'savefile.bin'. Se le puede pasar un argumento con el nombre del archivo que es descargado.
 
 
-El guardado de archivos funciona por ahroa en Chrome y Firefox.
+El guardado de archivos funciona por ahora en Chrome y Firefox.
 Probado en Chrome, Firefox y Safari (creo que para que funcione en IE necesita de IE10).
 

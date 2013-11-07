@@ -7,11 +7,7 @@ Los tests están en test/SpecRunner.html
 
 Desde index.html se puede cargar un save file y por consola se muestran los datos parseados.
 
-TODO
-----
-
-  - chequeo de errores
-  - grabar el archivo
+Hay que tener en cuenta que no se chequean los valores pasados como índice a ```setNumero```, ```getNumero``` y ```setSwitch```, ```getSwitch```.
 
 
 Uso

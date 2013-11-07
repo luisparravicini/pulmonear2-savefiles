@@ -20,6 +20,21 @@ SaveFile = cc.Class.extend({
 	        this._view.setUint8(i, dataView.getUint8(i));
 	},
 
+	guardar:function(filename) {
+	    // var pom = document.createElement('a');
+	    var a = document.createElement('a');
+	    var blob = new Blob([this._data], {'type': 'application/octect-stream'});
+        a.href = window.URL.createObjectURL(blob);
+        a.download = filename || 'savefile.bin';
+        document.body.appendChild(a);
+        a.click();
+         document.body.removeChild(a);
+	    // pom.setAttribute('href', 'data:application/octet-stream,' +
+	    // 	encodeURIComponent(this._dump()));
+	    // pom.setAttribute('download', 'savefile.bin');
+	    // pom.click();
+	},
+
     setFuturo:function(futuro) {
     	this._setBool(0, futuro);
     },

@@ -10,10 +10,16 @@
 <script src="src/save_file.js"></script>
 <script>
 
+var saveFile = new SaveFile();
+
 function handleFiles(file) {
+  $('.download').remove();
+  $('body').append($('<button>').addClass('download').text('guardar').click(function() {
+    saveFile.guardar();
+  }));
+
   var reader = new FileReader();
   reader.onload = function(e) {
-      var saveFile = new SaveFile();
       var buffer = e.target.result;
       saveFile.cargar(buffer);
       dumpFile(saveFile);
@@ -64,6 +70,7 @@ function dumpFile(saveFile) {
 <form>
 <p><input id="uploadInput" type="file" onchange="updateSize(); handleFiles(this.files[0]);">file size: <span id="fileSize">0</span></p>
 </form>
+
 <div id="dump"></div>
 </body>
 </html>

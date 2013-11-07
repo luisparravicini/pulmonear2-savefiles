@@ -56,9 +56,19 @@ El [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer) s
     reader.readAsArrayBuffer(file);
   }
   </script>
-  
+
   <input id="uploadInput" type="file" onchange="cargarArchivo(this.files[0]);">
 ```
 
-Probado en Chrome, Firefox y Safari
+Para grabar el archivo:
+
+```
+  saveFile.guardar();
+```
+
+Esto genera un download con nombre 'savefile.bin'. Se le puede pasar un argumento con el nombre del archivo que es descargado.
+
+
+El guardado de archivos funciona por ahroa en Chrome y Firefox.
+Probado en Chrome, Firefox y Safari (creo que para que funcione en IE necesita de IE10).
 

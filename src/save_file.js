@@ -10,7 +10,11 @@ mulitasoft.SaveFile = cc.Class.extend({
         this._view = new DataView(data);
     },
 
-    getTematica:function() {
+    setFuturo:function(futuro) {
+    	this._view.setUint8(0, futuro);
+    },
+
+    getFuturo:function() {
         return this._view.getUint8(0);
     },
 

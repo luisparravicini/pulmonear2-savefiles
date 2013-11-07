@@ -15,13 +15,15 @@ describe("SaveFile", function() {
     clearBuffer(view);
   });
 
-  it("header: tematica", function() {
-    for (var i = 0; i < 2; i++) {
-      var expected = i;
-      view.setUint8(0, expected);
-      saveFile.parse(buffer);
-      expect(saveFile.getTematica()).toBe(expected);
-    }
+  it("header: futuro", function() {
+    saveFile.parse(buffer);
+    expect(saveFile.getFuturo()).toBeFalsy();
+
+    saveFile.setFuturo(true);
+    expect(saveFile.getFuturo()).toBeTruthy();
+
+    saveFile.setFuturo(false);
+    expect(saveFile.getFuturo()).toBeFalsy();
   });
 
   it("header: numeros", function() {
@@ -81,7 +83,7 @@ describe("SaveFile", function() {
     });
     saveFile.parse(buffer);
 
-    expect(saveFile.getTematica()).toBe(1);
+    expect(saveFile.getFuturo()).toBe(1);
 
     var numeros = [-1233, -1227, -1185, -891, 1167, 15573];
     numeros.forEach(function(n, i) {

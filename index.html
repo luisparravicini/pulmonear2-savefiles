@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>SaveFile</title>
-<script src="src/CCClass.js"></script>
+<style>
+  p { margin: 0; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script src="src/CCClass.js"></script>
 <script src="src/save_file.js"></script>
 <script>
 function updateSize() {
@@ -23,6 +26,11 @@ function updateSize() {
   document.getElementById("fileSize").innerHTML = sOutput;
 }
 
+function log(what) {
+  var dump = $('#dump');
+  dump.append($('<p>').text(what));
+};
+
 function handleFiles(files) {
   for (var i = 0; i < files.length; i++) {
     var file = files[i];
@@ -34,13 +42,14 @@ function handleFiles(files) {
         var saveFile = new mulitasoft.SaveFile();
         saveFile.parse(buffer);
 
-        console.log('tematica', saveFile.getTematica());
+        var dump = $('#dump');
+        log('tematica ' + saveFile.getTematica());
         for (var i = 0; i < 6; i++)
-          console.log('numero ' + i, saveFile.getNumero(i));
+          log('numeros[' + i + '] = ' + saveFile.getNumero(i));
         for (var i = 0; i < 6; i++)
-          console.log('switchs ' + i, saveFile.getSwitch(i));
-        console.log('nombre', saveFile.getNombre());
-        console.log('data', saveFile.getData());
+          log('switchs[' + i + '] = ' + saveFile.getSwitch(i));
+        log('nombre = ' + saveFile.getNombre());
+        log('data = ' + saveFile.getData());
     	 };
 
     reader.readAsArrayBuffer(file);
@@ -54,6 +63,6 @@ function handleFiles(files) {
 <form name="uploadForm">
 <p><input id="uploadInput" type="file" name="myFiles" onchange="updateSize();handleFiles(this.files);" multiple> selected files: <span id="fileNum">0</span>; total size: <span id="fileSize">0</span></p>
 </form>
-<p>En la consola salen los datos del archivo</p>
+<div id="dump"></div>
 </body>
 </html>

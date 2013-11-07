@@ -16,8 +16,6 @@ Uso
 ```
   var saveFile = new SaveFile();
 
-  saveFile.cargar( arrayBuffer );
-
   // setters
   saveFile.setFuturo( true / false );
   saveFile.setNumero( offset, valor );
@@ -32,6 +30,34 @@ Uso
   saveFile.getNombre();
   saveFile.getData();
 
+```
+
+Se carga un archivo con
+
+```
+  saveFile.cargar( arrayBuffer );
+```
+
+El [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer) se puede generar a mano o a través de un file upload:
+
+```
+  <script>
+  function cargarArchivo(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+    	var saveFile = new SaveFile();
+      	saveFile.cargar(e.target.result);
+
+      	...
+      	blah blah blah
+      	...
+    };
+
+    reader.readAsArrayBuffer(file);
+  }
+  </script>
+  
+  <input id="uploadInput" type="file" onchange="cargarArchivo(this.files[0]);">
 ```
 
 Probado en Chrome, Firefox y Safari

@@ -5,7 +5,7 @@ Codigo en javascript para leer los save files de [pulmonear 2](http://www.duval.
 
 Los tests están en test/SpecRunner.html
 
-Desde index.html se puede cargar un save file y por consola se muestran los datos parseados.
+Desde index.html se puede cargar un save file, ver los datos que tiene y probar el guardar ese mismo archivo.
 
 Hay que tener en cuenta que no se chequean los valores pasados como índice a ```setNumero```, ```getNumero``` y ```setSwitch```, ```getSwitch```.
 

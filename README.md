@@ -14,6 +14,27 @@ TODO
   - grabar el archivo
 
 
+Uso
+---
+
+```
+  var saveFile = new SaveFile();
+
+  // setters
+  saveFile.setFuturo( true / false );
+  saveFile.setNumero( offset, valor );
+  saveFile.setSwitch( offset, valor );
+  saveFile.setNombre( nombre );
+  saveFile.setData( data ); // un Array
+
+  // getters
+  saveFile.getFuturo();
+  saveFile.getNumero( offset );
+  saveFile.getSwitch( offset );
+  saveFile.getNombre();
+  saveFile.getData();
+
+```
 
 Probado en Chrome, Firefox y Safari
 

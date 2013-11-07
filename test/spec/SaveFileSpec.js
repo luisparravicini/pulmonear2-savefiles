@@ -3,7 +3,7 @@ describe("SaveFile", function() {
   var saveFile;
 
   beforeEach(function() {
-    saveFile = new mulitasoft.SaveFile();
+    saveFile = new SaveFile();
   });
 
   it("header: futuro", function() {

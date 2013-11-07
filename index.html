@@ -39,7 +39,7 @@ function handleFiles(files) {
     var reader = new FileReader();
     reader.onload = function(e) {
         var buffer = e.target.result;
-        var saveFile = new mulitasoft.SaveFile();
+        var saveFile = new SaveFile();
         saveFile.parse(buffer);
 
         var dump = $('#dump');

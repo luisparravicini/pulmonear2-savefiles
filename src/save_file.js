@@ -1,7 +1,5 @@
 
-var mulitasoft = mulitasoft || {};
-
-mulitasoft.SaveFile = cc.Class.extend({
+SaveFile = cc.Class.extend({
 	_data:null,
 	_view:null,
 

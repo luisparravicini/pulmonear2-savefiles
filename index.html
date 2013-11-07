@@ -10,9 +10,7 @@
 <script src="src/save_file.js"></script>
 <script>
 
-function handleFiles(files) {
-  var file = files[0];
-
+function handleFiles(file) {
   var reader = new FileReader();
   reader.onload = function(e) {
       var saveFile = new SaveFile();
@@ -64,7 +62,7 @@ function dumpFile(saveFile) {
 
 <body>
 <form>
-<p><input id="uploadInput" type="file" onchange="updateSize(); handleFiles(this.files);">file size: <span id="fileSize">0</span></p>
+<p><input id="uploadInput" type="file" onchange="updateSize(); handleFiles(this.files[0]);">file size: <span id="fileSize">0</span></p>
 </form>
 <div id="dump"></div>
 </body>

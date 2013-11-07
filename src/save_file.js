@@ -1,3 +1,5 @@
+//Copyright (C) 2013 Luis Parravicini
+//No rights reserved - Public domain dedication - http://creativecommons.org/publicdomain/zero/1.0/
 
 SaveFile = cc.Class.extend({
 	_data:null,

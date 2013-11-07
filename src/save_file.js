@@ -5,10 +5,20 @@ mulitasoft.SaveFile = cc.Class.extend({
 	_data:null,
 	_view:null,
 
-    parse:function(data) {
-        this._data = data;
-        this._view = new DataView(data);
+    ctor:function() {
+        this._data = new ArrayBuffer(35 + 256);
+        this._view = new DataView(this._data);
     },
+
+	reset:function() {
+	    for (var i = 0; i < this._view.byteLength; i++)
+	        this._view.setUint8(i, 0);
+	},
+
+	cargar:function(data) {
+	    for (var i = 0; i < this._view.byteLength; i++)
+	        this._view.setUint8(i, data[i]);
+	},
 
     setFuturo:function(futuro) {
     	this._view.setUint8(0, futuro);

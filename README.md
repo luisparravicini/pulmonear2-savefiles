@@ -12,7 +12,6 @@ TODO
 
   - chequeo de errores
   - grabar el archivo
-  - repensar la manera en que se instancia / cargan los datos
 
 
 

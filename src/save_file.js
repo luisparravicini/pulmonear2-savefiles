@@ -15,11 +15,11 @@ mulitasoft.SaveFile = cc.Class.extend({
     },
 
     setNumero:function(idx, value) {
-    	this._view.setInt16(1 + idx * 2, value, false);
+    	this._view.setInt16(1 + idx * 2, value, true);
     },
 
     getNumero:function(idx) {
-    	return this._view.getInt16(1 + idx * 2, false);
+    	return this._view.getInt16(1 + idx * 2, true);
     },
 
     setSwitch:function(idx, enabled) {
